@@ -1,11 +1,11 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { ExternalLink, ArrowUpRight } from 'lucide-react';
-import { Project } from '@/lib/portfolio-data';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { Project } from "@/lib/portfolio-data";
+import Link from "next/link";
 
 interface ProjectCardProps {
   project: Project;
@@ -35,16 +35,22 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </h3>
             <ArrowUpRight className="w-5 h-5 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
           </div>
-          <p className="text-muted-foreground mb-4 line-clamp-2">{project.description}</p>
+          <p className="text-muted-foreground mb-4 line-clamp-2">
+            {project.description}
+          </p>
           <div className="flex flex-wrap gap-2">
-            {project.technologies.slice(0, 3).map((tech) => (
-              <Badge key={tech} variant="secondary" className="text-xs py-0.5 px-2">
+            {(project.technologies || []).slice(0, 3).map((tech) => (
+              <Badge
+                key={tech}
+                variant="secondary"
+                className="text-xs py-0.5 px-2"
+              >
                 {tech}
               </Badge>
             ))}
-            {project.technologies.length > 3 && (
+            {(project.technologies || []).length > 3 && (
               <Badge variant="secondary" className="text-xs py-0.5 px-2">
-                +{project.technologies.length - 3} more
+                +{(project.technologies || []).length - 3} more
               </Badge>
             )}
           </div>
