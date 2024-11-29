@@ -14,7 +14,7 @@ export function SplineBackground() {
       >
         <iframe
           // src="https://my.spline.design/worldplanet-236d00b6438830c6ba0daa2542b24802/"
-          src="https://my.spline.design/100followers-fb82c2d26740bfc11957841a64fdeac8/"
+          src="https://my.spline.design/cubic-384037281e3032cb00511704a5f9fc77/"
           frameBorder="0"
           width="100%"
           height="100%"

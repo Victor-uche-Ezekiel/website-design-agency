@@ -2,87 +2,95 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useTheme } from 'next-themes';
-import { ArrowRight } from 'lucide-react';
-import { services } from '@/lib/services-data';
-import Link from 'next/link';
-import { Palette, Code, Layout, Megaphone, Rocket, LineChart } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
+import { services } from '@/lib/home-data';
+import { ArrowRight, Check } from 'lucide-react';
+import type { LucideProps } from 'lucide-react';
 
-const iconMap = {
-  design: Palette,
-  development: Code,
-  ui: Layout,
-  marketing: Megaphone,
-  startup: Rocket,
-  analytics: LineChart,
-};
+function getIcon(iconName: string) {
+  const IconComponent = (
+    LucideIcons as unknown as Record<string, React.ComponentType<LucideProps>>
+  )[iconName];
+  return IconComponent ? <IconComponent className="h-8 w-8" /> : null;
+}
 
 export function ServicesList() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-  const [ref, inView] = useInView({ triggerOnce: true });
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1
-      }
-    }
+        duration: 0.8,
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
   };
 
   return (
-    <motion.div
-      ref={ref}
-      variants={containerVariants}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-    >
-      {services.map((service, index) => (
-        <motion.div key={service.id} variants={itemVariants}>
-          <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
-            <Card
-              className={`p-6 h-full transition-all duration-300 hover:scale-105 ${
-                isDark
-                  ? 'bg-background/5 backdrop-blur-sm border-primary/20 hover:bg-background/10'
-                  : 'bg-white border-gray-200 hover:shadow-lg'
-              }`}
+    <section ref={ref} className="py-24 overflow-hidden">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        className="container mx-auto px-4 md:px-6 max-w-7xl"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="group relative"
             >
-              <div className="flex flex-col h-full">
-                <div className="mb-4">
-                  <span className={`text-2xl ${isDark ? 'text-primary' : 'text-primary/80'}`}>
-                    <IconMap icon={service.icon} />
-                  </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl -m-2 group-hover:from-primary/10 group-hover:to-purple-500/10 transition-colors duration-300" />
+              <div className="relative p-8 space-y-6 bg-background/50 backdrop-blur-sm rounded-lg shadow-lg border border-primary/10">
+                <div className="bg-gradient-to-r from-primary/10 to-purple-600/10 w-16 h-16 rounded-lg flex items-center justify-center group-hover:from-primary/20 group-hover:to-purple-600/20 transition-colors duration-300">
+                  <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                    {getIcon(service.iconName)}
+                  </div>
                 </div>
-                <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                  {service.title}
-                </h3>
-                <p className={`mb-4 flex-grow ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
-                  {service.description}
-                </p>
-                <div className="flex items-center text-primary group">
-                  <span className="mr-2">Learn More</span>
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold">{service.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-2">
+                        <Check className="w-5 h-5 text-primary" />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button
+                    variant="outline"
+                    className="w-full mt-4 group-hover:bg-primary/5"
+                  >
+                    {service.buttonText}
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Button>
                 </div>
               </div>
-            </Card>
-          </Link>
-        </motion.div>
-      ))}
-    </motion.div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
   );
-}
-
-function IconMap({ icon }: { icon: string }) {
-  const Icon = iconMap[icon as keyof typeof iconMap];
-  return <Icon className="h-6 w-6" />;
 }

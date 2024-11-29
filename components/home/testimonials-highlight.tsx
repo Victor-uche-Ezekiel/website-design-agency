@@ -5,16 +5,21 @@ import { useInView } from 'react-intersection-observer';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Quote, ArrowRight } from 'lucide-react';
-import { projects } from '@/lib/portfolio-data';
 import Link from 'next/link';
 
-export function TestimonialsHighlight() {
+type Testimonial = {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  image: string;
+  technologies: string[];
+};
+
+export function TestimonialsHighlight({ testimonials }: { testimonials: Testimonial[] }) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
-  // Get the top 3 testimonials from projects
-  const featuredTestimonials = projects
-    .filter(project => project.testimonial)
-    .slice(0, 3);
+  const featuredTestimonials = testimonials;
 
   return (
     <section ref={ref} className="py-24 relative overflow-hidden">
@@ -42,9 +47,9 @@ export function TestimonialsHighlight() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {featuredTestimonials.map((project, index) => (
+          {featuredTestimonials.map((testimonial, index) => (
             <motion.div
-              key={project.id}
+              key={testimonial.id}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
@@ -54,22 +59,22 @@ export function TestimonialsHighlight() {
                   <Quote className="h-8 w-8" />
                 </div>
                 <blockquote className="text-lg italic mb-6 flex-grow">
-                  "{project.testimonial!.quote}"
+                  "{testimonial.description}"
                 </blockquote>
                 <div className="flex items-center gap-4 mb-6">
                   <img
-                    src={project.testimonial!.avatar}
-                    alt={project.testimonial!.author}
+                    src={testimonial.image}
+                    alt={testimonial.title}
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>
-                    <p className="font-semibold">{project.testimonial!.author}</p>
+                    <p className="font-semibold">{testimonial.title}</p>
                     <p className="text-sm text-muted-foreground">
-                      {project.testimonial!.role}, {project.testimonial!.company}
+                      {testimonial.technologies.join(', ')}
                     </p>
                   </div>
                 </div>
-                <Link href={`/portfolio/${project.slug}`} className="mt-auto">
+                <Link href={`/portfolio/${testimonial.slug}`} className="mt-auto">
                   <Button variant="outline" className="w-full group">
                     View Project
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

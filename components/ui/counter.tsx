@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { animate } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface CounterProps {
   from?: number;
   to: number;
   duration?: number;
+  className?: string;
   formatValue?: (value: number) => string;
 }
 
@@ -15,6 +17,7 @@ export function Counter({
   from = 0,
   to,
   duration = 2,
+  className,
   formatValue = (value) => Math.round(value).toString(),
 }: CounterProps) {
   const [count, setCount] = useState(from);
@@ -38,7 +41,7 @@ export function Counter({
   }, [from, to, duration, inView]);
 
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className={cn("tabular-nums", className)}>
       {formatValue(count)}
     </span>
   );

@@ -2,55 +2,55 @@ export const services = [
   {
     id: 1,
     title: "Web Design",
-    icon: "design",
-    description: "Create stunning, user-friendly websites that capture your brand's essence.",
+    icon: "Palette",
+    description: "Create stunning, responsive websites that captivate and convert.",
     features: [
-      "Custom UI/UX Design",
-      "Responsive Layouts",
-      "Brand Integration",
-      "Interactive Prototypes"
+      "Custom Design",
+      "Mobile Optimization",
+      "User Experience Focus",
+      "Brand Consistency"
     ]
   },
   {
     id: 2,
     title: "Web Development",
-    icon: "development",
-    description: "Build robust, scalable web applications using cutting-edge technologies.",
+    icon: "Code",
+    description: "Build robust, scalable web applications with cutting-edge technologies.",
     features: [
-      "Full-Stack Development",
-      "E-commerce Solutions",
-      "CMS Integration",
-      "API Development"
+      "Frontend Development",
+      "Backend Integration",
+      "Performance Optimization",
+      "Responsive Design"
     ]
   },
   {
     id: 3,
-    title: "UI/UX Design",
-    icon: "ui",
-    description: "Create intuitive user experiences that drive engagement and conversion.",
+    title: "Digital Strategy",
+    icon: "Globe",
+    description: "Develop comprehensive digital strategies to drive business growth.",
     features: [
-      "User Research",
-      "Wireframing",
-      "Usability Testing",
-      "Interface Design"
+      "Market Research",
+      "Competitive Analysis",
+      "Digital Roadmap",
+      "Growth Planning"
     ]
   },
   {
     id: 4,
-    title: "Digital Marketing",
-    icon: "marketing",
-    description: "Boost your online presence and reach your target audience effectively.",
+    title: "E-commerce Solutions",
+    icon: "ShoppingCart",
+    description: "Create powerful online stores that enhance customer experience.",
     features: [
-      "SEO Optimization",
-      "Content Strategy",
-      "Social Media",
-      "Analytics & Reporting"
+      "Platform Selection",
+      "Payment Integration",
+      "Product Management",
+      "Conversion Optimization"
     ]
   },
   {
     id: 5,
     title: "Startup Solutions",
-    icon: "startup",
+    icon: "Rocket",
     description: "Launch your startup with a strong digital foundation and strategy.",
     features: [
       "MVP Development",
@@ -62,7 +62,7 @@ export const services = [
   {
     id: 6,
     title: "Analytics & SEO",
-    icon: "analytics",
+    icon: "BarChart",
     description: "Optimize your digital presence with data-driven insights and strategies.",
     features: [
       "Performance Tracking",

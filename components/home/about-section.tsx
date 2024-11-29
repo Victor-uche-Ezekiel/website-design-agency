@@ -5,14 +5,27 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/ui/counter";
-import { ArrowRight, Users2, Trophy, Clock, Heart } from "lucide-react";
+import * as LucideIcons from "lucide-react";
 import Link from "next/link";
+import { AboutStat } from "@/lib/home-data";
+import type { LucideProps } from "lucide-react";
 
-export function AboutSection() {
+interface AboutSectionProps {
+  stats: AboutStat[];
+}
+
+export function AboutSection({ stats }: AboutSectionProps) {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const getIcon = (iconName: AboutStat["iconName"]) => {
+    const IconComponent = (
+      LucideIcons as unknown as Record<string, React.ComponentType<LucideProps>>
+    )[iconName];
+    return IconComponent ? <IconComponent className="w-8 h-8" /> : null;
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -36,41 +49,6 @@ export function AboutSection() {
     },
   };
 
-  const stats = [
-    {
-      icon: Users2,
-      value: 200,
-      prefix: "",
-      suffix: "+",
-      label: "Projects Completed",
-      description: "Successfully delivered digital solutions"
-    },
-    {
-      icon: Heart,
-      value: 98,
-      prefix: "",
-      suffix: "%",
-      label: "Client Satisfaction",
-      description: "Consistently exceeding expectations"
-    },
-    {
-      icon: Trophy,
-      value: 15,
-      prefix: "",
-      suffix: "+",
-      label: "Industry Awards",
-      description: "Recognition for excellence"
-    },
-    {
-      icon: Clock,
-      value: 24,
-      prefix: "",
-      suffix: "/7",
-      label: "Support Available",
-      description: "Always here when you need us"
-    }
-  ];
-
   return (
     <section ref={ref} className="relative py-24 overflow-hidden">
       {/* Background Elements */}
@@ -87,7 +65,10 @@ export function AboutSection() {
           animate={inView ? "visible" : "hidden"}
         >
           {/* Header Section */}
-          <motion.div variants={itemVariants} className="text-center mb-16 max-w-3xl mx-auto">
+          <motion.div
+            variants={itemVariants}
+            className="text-center mb-16 max-w-3xl mx-auto"
+          >
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl mb-4">
               Transforming Ideas into{" "}
               <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
@@ -95,12 +76,13 @@ export function AboutSection() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground md:text-xl">
-              We're a passionate team of creators and innovators, dedicated to crafting exceptional digital experiences that drive success.
+              We're a passionate team of creators and innovators, dedicated to
+              crafting exceptional digital experiences that drive success.
             </p>
           </motion.div>
 
           {/* Image Section */}
-          <motion.div variants={itemVariants} className="relative mb-16">
+          <motion.div variants={itemVariants} className="relative mb-24">
             <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
@@ -114,32 +96,43 @@ export function AboutSection() {
           </motion.div>
 
           {/* Stats Grid */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-16"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
           >
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="relative group"
+                className="group relative h-full"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl -m-2 group-hover:from-primary/10 group-hover:to-purple-500/10 transition-colors duration-300" />
-                <div className="relative p-6 text-center space-y-4">
-                  <stat.icon className="w-8 h-8 mx-auto text-primary" />
-                  <h4 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                    {stat.prefix}
-                    <Counter 
-                      from={0} 
-                      to={stat.value} 
-                      duration={2}
-                      formatValue={(value) => Math.round(value).toString()}
-                    />
-                    {stat.suffix}
-                  </h4>
-                  <div>
-                    <p className="font-semibold">{stat.label}</p>
-                    <p className="text-sm text-muted-foreground">{stat.description}</p>
+                <div className="relative h-full p-6 space-y-6 bg-background/50 backdrop-blur-sm rounded-lg shadow-lg border border-primary/10 flex flex-col items-center">
+                  <div className="bg-gradient-to-r from-primary/10 to-purple-600/10 w-16 h-16 rounded-lg flex items-center justify-center group-hover:from-primary/20 group-hover:to-purple-600/20 transition-colors duration-300">
+                    <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+                      {getIcon(stat.iconName)}
+                    </div>
+                  </div>
+                  <div className="flex-grow space-y-3 w-full">
+                    <div className="flex items-baseline gap-1 justify-center">
+                      <span className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent ">
+                        {stat.prefix}
+                      </span>
+                      <Counter
+                        from={0}
+                        to={stat.value}
+                        className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+                      />
+                      <span className="text-3xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+                        {stat.suffix}
+                      </span>
+                    </div>
+                    <h3 className="text-xl font-semibold text-center">
+                      {stat.label}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed text-center">
+                      {stat.description}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -147,7 +140,7 @@ export function AboutSection() {
           </motion.div>
 
           {/* CTA Section */}
-          <motion.div variants={itemVariants} className="text-center">
+          <motion.div variants={itemVariants} className="text-center mt-24">
             <div className="inline-flex gap-4 flex-wrap justify-center">
               <Button
                 asChild
@@ -156,7 +149,7 @@ export function AboutSection() {
               >
                 <Link href="/about">
                   Learn More About Us
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <LucideIcons.ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
               <Button

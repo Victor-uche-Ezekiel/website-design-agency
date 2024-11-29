@@ -6,9 +6,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
-import { projects } from '@/lib/portfolio-data';
 
-export function PortfolioSection() {
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  slug: string;
+  image: string;
+  technologies?: string[];
+}
+
+interface PortfolioSectionProps {
+  projects: Project[];
+}
+
+export function PortfolioSection({ projects }: PortfolioSectionProps) {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   const featuredProjects = projects.slice(0, 3);
