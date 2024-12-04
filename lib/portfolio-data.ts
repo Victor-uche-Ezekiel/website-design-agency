@@ -22,13 +22,7 @@ export interface Project {
   result: string;
   link: string;
   technologies?: string[];
-  testimonial?: {
-    quote: string;
-    author: string;
-    role: string;
-    company: string;
-    avatar: string;
-  };
+  testimonial?: Testimonial;
   previousProject?: {
     title: string;
     description: string;
@@ -50,141 +44,82 @@ export const projects: Project[] = [
     title: "E-commerce Platform Redesign",
     description: "A complete redesign and development of an e-commerce platform focusing on user experience and conversion optimization.",
     slug: "ecommerce-platform-redesign",
-    image: "/projects/ecommerce.jpg",
+    image: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1698335991476-9b4efe7c6d03?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1698335991431-7409fdbd6779?auto=format&fit=crop&q=80&w=1200"
+    ],
     clientUrl: "https://example.com",
     sector: "Retail",
     type: "E-commerce",
-    objective: "Improve user experience and increase conversion rates",
+    objective: "Increase online sales and improve user experience",
     process: "User research, wireframing, prototyping, development",
-    result: "40% increase in conversion rate",
+    result: "150% increase in conversion rate",
     link: "https://example.com",
-    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    technologies: ["React", "Node.js", "MongoDB", "AWS"],
     testimonial: {
-      quote:
-        "The e-commerce platform transformed our business. Sales increased by 200% in the first quarter.",
-      author: "Sarah Johnson",
+      quote: "The team delivered an exceptional e-commerce platform that exceeded our expectations.",
+      author: "John Smith",
       role: "CEO",
-      company: "Fashion Forward",
-      avatar:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
-    },
-    nextProject: {
-      title: "Corporate Dashboard",
-      description:
-        "An intuitive analytics dashboard for enterprise data visualization.",
-      slug: "corporate-dashboard",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    },
+      company: "Fashion Retail Co.",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400"
+    }
   },
   {
     id: "2",
-    category: "Digital Marketing",
-    title: "Brand Identity System",
-    description: "Development of a comprehensive brand identity system including logo, typography, and digital assets.",
-    slug: "brand-identity-system",
-    image: "/projects/branding.jpg",
-    clientUrl: "https://example.com",
-    sector: "Technology",
-    type: "Branding",
-    objective: "Create a cohesive brand identity",
-    process: "Brand research, design exploration, implementation",
-    result: "Successful brand launch with positive feedback",
-    link: "https://example.com",
-    technologies: ["Figma", "Adobe Creative Suite", "Brand Design", "Typography"],
-    testimonial: {
-      quote:
-        "The dashboard has streamlined our reporting process and saved countless hours.",
-      author: "Michael Chen",
-      role: "CTO",
-      company: "TechCorp",
-      avatar:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
-    },
-    previousProject: {
-      title: "Modern E-commerce Platform",
-      description:
-        "A full-featured e-commerce solution with real-time inventory.",
-      slug: "modern-e-commerce-platform",
-      image:
-        "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
-    },
-    nextProject: {
-      title: "Startup Landing Page",
-      description: "A high-converting landing page with modern design.",
-      slug: "startup-landing-page",
-      image:
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-    },
-  },
-  {
-    id: "3",
-    category: "UI/UX Design",
-    title: "Mobile App Interface",
-    description: "Design and development of an intuitive mobile app interface for a fitness tracking application.",
-    slug: "mobile-app-interface",
-    image: "/projects/mobile-app.jpg",
+    category: "Mobile Development",
+    title: "Fitness Tracking App",
+    description: "A mobile application for tracking workouts, nutrition, and personal fitness goals.",
+    slug: "fitness-tracking-app",
+    image: "https://images.unsplash.com/photo-1698335991476-9b4efe7c6d03?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1698335991476-9b4efe7c6d03?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1698335991431-7409fdbd6779?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200"
+    ],
     clientUrl: "https://example.com",
     sector: "Health & Fitness",
     type: "Mobile App",
-    objective: "Create an intuitive user interface",
-    process: "User research, wireframing, prototyping",
-    result: "95% user satisfaction rate",
+    objective: "Create an intuitive fitness tracking solution",
+    process: "Market research, UX design, development, testing",
+    result: "100,000+ downloads in first month",
     link: "https://example.com",
-    technologies: ["React Native", "UI/UX Design", "Prototyping", "User Testing"],
+    technologies: ["React Native", "Firebase", "TypeScript"],
     testimonial: {
-      quote:
-        "Our conversion rate doubled after launching the new landing page.",
-      author: "Emily Rodriguez",
-      role: "Marketing Director",
-      company: "InnovateLab",
-      avatar:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
-    },
-    previousProject: {
-      title: "Corporate Dashboard",
-      description:
-        "An intuitive analytics dashboard for enterprise data visualization.",
-      slug: "corporate-dashboard",
-      image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
-    },
+      quote: "The app has transformed how our users track their fitness journey.",
+      author: "Sarah Lee",
+      role: "Product Manager",
+      company: "FitTech Solutions",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400"
+    }
   },
   {
-    id: "4",
+    id: "3",
     category: "Web Development",
-    title: "AI-Powered Education Platform",
-    description:
-      "An innovative learning platform with personalized content delivery.",
-    slug: "ai-powered-education-platform",
-    image:
-      "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=800&q=80",
-    link: "https://example.com",
-    technologies: ["Next.js", "Python", "TensorFlow", "AWS"],
-    clientUrl: "https://example-education.com",
+    title: "Educational Platform",
+    description: "An interactive learning platform for students and educators with real-time collaboration features.",
+    slug: "educational-platform",
+    image: "https://images.unsplash.com/photo-1698335991431-7409fdbd6779?auto=format&fit=crop&q=80&w=1200",
+    gallery: [
+      "https://images.unsplash.com/photo-1698335991431-7409fdbd6779?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
+      "https://images.unsplash.com/photo-1698335991476-9b4efe7c6d03?auto=format&fit=crop&q=80&w=1200"
+    ],
+    clientUrl: "https://example.com",
     sector: "Education",
-    type: "B2B",
-    objective:
-      "The client required a cutting-edge education platform that could provide personalized learning experiences for students.",
-    process:
-      "We developed a scalable solution using Next.js and Python, integrating TensorFlow for AI-powered content delivery and AWS for reliable infrastructure.",
-    result:
-      "The platform has improved student engagement by 30% and increased learning outcomes by 25%.",
+    type: "EdTech",
+    objective: "Modernize online learning experience",
+    process: "Stakeholder interviews, prototyping, agile development",
+    result: "500% increase in student engagement",
+    link: "https://example.com",
+    technologies: ["Next.js", "Socket.io", "PostgreSQL"],
     testimonial: {
-      quote:
-        "Student engagement increased significantly with the personalized learning approach.",
-      author: "David Park",
-      role: "Principal",
-      company: "Future Academy",
-      avatar:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-    },
-    previousProject: {
-      title: "Startup Landing Page",
-      description: "A high-converting landing page with modern design.",
-      slug: "startup-landing-page",
-      image:
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80",
-    },
-  },
+      quote: "This platform has revolutionized how we deliver online education.",
+      author: "Michael Brown",
+      role: "Director of Education",
+      company: "EduTech Inc",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400"
+    }
+  }
 ];

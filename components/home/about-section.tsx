@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/ui/counter";
 import * as LucideIcons from "lucide-react";
 import Link from "next/link";
-import { AboutStat } from "@/lib/home-data";
+import { AboutStat, aboutContent } from "@/lib/home-data";
 import type { LucideProps } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 interface AboutSectionProps {
   stats: AboutStat[];
@@ -67,31 +68,72 @@ export function AboutSection({ stats }: AboutSectionProps) {
           {/* Header Section */}
           <motion.div
             variants={itemVariants}
-            className="text-center mb-16 max-w-3xl mx-auto"
+            className="text-center mb-16 max-w-3xl mx-auto space-y-4"
           >
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl mb-4">
-              Transforming Ideas into{" "}
-              <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-                Digital Reality
-              </span>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
+              {aboutContent.heading}
             </h2>
-            <p className="text-lg text-muted-foreground md:text-xl">
-              We're a passionate team of creators and innovators, dedicated to
-              crafting exceptional digital experiences that drive success.
+            <p className="text-xl text-primary font-medium">
+              {aboutContent.subheading}
             </p>
           </motion.div>
 
-          {/* Image Section */}
-          <motion.div variants={itemVariants} className="relative mb-24">
-            <div className="aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl">
-              <Image
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
-                alt="Our team collaborating"
-                fill
-                className="object-cover transition-transform hover:scale-105 duration-700"
-                priority
-              />
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-primary/10 to-transparent mix-blend-multiply" />
+          {/* Main Content Grid */}
+          <motion.div variants={itemVariants} className="grid lg:grid-cols-2 gap-12 mb-24">
+            {/* Left Column - Text Content */}
+            <div className="space-y-8">
+              <div className="prose prose-lg dark:prose-invert">
+                {aboutContent.mainText.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="text-muted-foreground leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {aboutContent.highlights.map((highlight, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
+                    <span className="text-sm">{highlight}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="flex gap-4">
+                <Button
+                  asChild
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90 text-white shadow-lg group"
+                >
+                  <Link href="/about">
+                    Learn More About Us
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  size="lg"
+                  variant="outline"
+                  className="shadow-lg group"
+                >
+                  <Link href="/contact">
+                    Contact Us
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Image */}
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
+                  alt="Our team collaborating"
+                  fill
+                  className="object-cover transition-transform hover:scale-105 duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-primary/10 to-transparent mix-blend-multiply" />
+              </div>
             </div>
           </motion.div>
 
@@ -115,7 +157,7 @@ export function AboutSection({ stats }: AboutSectionProps) {
                   </div>
                   <div className="flex-grow space-y-3 w-full">
                     <div className="flex items-baseline gap-1 justify-center">
-                      <span className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent ">
+                      <span className="text-6xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
                         {stat.prefix}
                       </span>
                       <Counter
@@ -137,30 +179,6 @@ export function AboutSection({ stats }: AboutSectionProps) {
                 </div>
               </motion.div>
             ))}
-          </motion.div>
-
-          {/* CTA Section */}
-          <motion.div variants={itemVariants} className="text-center mt-24">
-            <div className="inline-flex gap-4 flex-wrap justify-center">
-              <Button
-                asChild
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-white shadow-lg group"
-              >
-                <Link href="/about">
-                  Learn More About Us
-                  <LucideIcons.ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-primary/20 hover:bg-primary/5 shadow-lg"
-              >
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-            </div>
           </motion.div>
         </motion.div>
       </div>

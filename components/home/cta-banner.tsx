@@ -6,14 +6,17 @@ import { Button } from '@/components/ui/button';
 import { ArrowRight, Calendar } from 'lucide-react';
 import Link from 'next/link';
 
-export function CTABanner() {
+interface CTABannerProps {
+  title: string;
+  description: string;
+  href: string;
+}
+
+export function CTABanner({ title, description, href }: CTABannerProps) {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
 
   return (
-    <section ref={ref} className="py-24 relative overflow-hidden">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-purple-600/10 to-primary/10" />
-      
+    <section ref={ref} className="bg-gradient-to-r from-primary/10 via-primary/5 to-background py-24 relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl transform -translate-y-1/2" />
@@ -27,18 +30,16 @@ export function CTABanner() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-              Ready to Transform Your Digital Presence?
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent">
+            {title}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-            Book a free consultation and let's discuss how we can help your business grow online
+            {description}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="group" asChild>
-              <Link href="/contact">
+              <Link href={href}>
                 Schedule Consultation
                 <Calendar className="ml-2 h-5 w-5" />
               </Link>
@@ -55,3 +56,9 @@ export function CTABanner() {
     </section>
   );
 }
+
+CTABanner.defaultProps = {
+  title: 'Ready to Transform Your Digital Presence?',
+  description: 'Book a free consultation and let\'s discuss how we can help your business grow online',
+  href: '/contact',
+};

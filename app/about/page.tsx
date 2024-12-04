@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { TeamMember } from '@/components/about/team-member';
-import { ProcessStep } from '@/components/about/process-step';
-import { WhyChooseUs } from '@/components/about/why-choose-us';
 import { PageHeader } from '@/components/page-header';
+import { ProcessTimeline } from '@/components/services/process-timeline';
+import { DesignComparison } from '@/components/home/design-comparison';
 
 export default function AboutPage() {
   const [missionRef, missionInView] = useInView({ triggerOnce: true });
@@ -88,78 +88,15 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <WhyChooseUs />
+      {/* Design Comparison Section */}
+      <section>
+        <DesignComparison />
+      </section>
 
-      {/* Our Process Section */}
-      <section className="py-20 bg-muted/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold mb-6">Our Process</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-              We follow a refined, client-centric process that ensures exceptional results and complete satisfaction.
-            </p>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              viewport={{ once: true }}
-            >
-              <ProcessStep
-                number={1}
-                title="Discovery & Research"
-                description="We begin with a deep dive into your business, conducting thorough research to understand your goals, target audience, and market position. This phase includes stakeholder interviews and competitive analysis."
-                image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              <ProcessStep
-                number={2}
-                title="Strategic Planning"
-                description="Based on our research, we develop a comprehensive strategy that outlines the project roadmap, technical requirements, and creative direction. This ensures alignment with your business objectives."
-                image="https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <ProcessStep
-                number={3}
-                title="Design & Development"
-                description="Our team brings your vision to life through iterative design and development phases. We maintain constant communication and incorporate your feedback at every step to ensure perfect execution."
-                image="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?auto=format&fit=crop&w=800&q=80"
-              />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <ProcessStep
-                number={4}
-                title="Launch & Growth"
-                description="We ensure a smooth launch and provide ongoing support and optimization. Our team monitors performance metrics and makes data-driven improvements to maximize your digital success."
-                image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
-              />
-            </motion.div>
-          </div>
+      {/* Process Timeline Section */}
+      <section className="bg-muted/50">
+        <div className="max-w-7xl mx-auto">
+          <ProcessTimeline />
         </div>
       </section>
     </div>

@@ -11,7 +11,10 @@ const nextConfig = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  images: { unoptimized: true },
+  images: {
+    unoptimized: true,
+    domains: ['images.unsplash.com'],
+  },
 };
 
 module.exports = nextConfig;

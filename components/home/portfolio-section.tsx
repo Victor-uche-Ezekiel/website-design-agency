@@ -1,110 +1,90 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  slug: string;
-  image: string;
-  technologies?: string[];
-}
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Project } from "@/config/projects";
 
 interface PortfolioSectionProps {
   projects: Project[];
 }
 
-export function PortfolioSection({ projects }: PortfolioSectionProps) {
-  const [ref, inView] = useInView({ triggerOnce: true });
-
+export const PortfolioSection = ({ projects }: PortfolioSectionProps) => {
   const featuredProjects = projects.slice(0, 3);
 
   return (
-    <section ref={ref} className="py-24 relative">
-      <div className="absolute inset-0 bg-grid-white/[0.02] bg-grid-black/[0.02] bg-center" />
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
-              Featured Projects
-            </span>
+    <section className="py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Featured Projects
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Explore our latest work and see how we've helped businesses transform their digital presence
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Discover our latest work and see how we help businesses grow through
+            innovative design solutions.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Projects Grid */}
+        <div className="">
           {featuredProjects.map((project, index) => (
-            <motion.div
+            <div
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="min-h-screen sticky top-0 flex items-center justify-center py-12"
             >
-              <Link href={`/portfolio/${project.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-xl bg-background/50 backdrop-blur-sm border shadow-sm hover:shadow-md transition-all duration-300">
-                  <div className="aspect-[16/9] relative overflow-hidden">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.technologies?.slice(0, 3).map((tech) => (
-                        <span
-                          key={tech}
-                          className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+              <Link
+                href={`/portfolio/${project.slug}`}
+                className="group block w-full relative"
+              >
+                <div className="absolute right-4 md:right-8 top-0 text-7xl md:text-8xl font-bold text-primary/10 z-10">
+                  {(index + 1).toString().padStart(2, "0")}
+                </div>
+                <div className="min-h-[60vh] overflow-hidden rounded-xl bg-background border shadow-lg hover:shadow-xl transition-all duration-300">
+                  <div className="grid md:grid-cols-2 gap-6 p-6 md:p-8">
+                    <div className="relative aspect-[4/3] md:aspect-[3/2] w-full max-w-[500px] mx-auto overflow-hidden bg-muted rounded-lg">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 500px"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        quality={90}
+                        loading={parseInt(project.id) <= 2 ? "eager" : "lazy"}
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center">
+                      <h3 className="text-xl md:text-2xl font-bold mb-3 group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+                      <p className="text-muted-foreground mb-6 md:text-lg">
+                        {project.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies?.map((tech) => (
+                          <span
+                            key={tech}
+                            className="text-sm px-3 py-1 rounded-full bg-primary/10 text-primary"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-primary/20 hover:bg-primary/5"
-            asChild
-          >
-            <Link href="/portfolio">
-              View All Projects <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
+        {/* View All Projects Button */}
+        <div className="text-center mt-12">
+          <Button asChild>
+            <Link href="/portfolio">View All Projects</Link>
           </Button>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
-}
+};

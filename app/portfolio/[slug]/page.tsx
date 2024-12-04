@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 // Generate static pages for each project
 export function generateStaticParams() {
   return projects.map((project) => ({
-    slug: project.title.toLowerCase().replace(/\s+/g, "-"),
+    slug: project.slug,
   }));
 }
 
@@ -16,10 +16,8 @@ interface ProjectPageProps {
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
-  // Find project by converting title to slug
-  const project = projects.find(
-    (p) => p.title.toLowerCase().replace(/\s+/g, "-") === params.slug
-  );
+  // Find project by slug
+  const project = projects.find((p) => p.slug === params.slug);
 
   if (!project) {
     notFound();

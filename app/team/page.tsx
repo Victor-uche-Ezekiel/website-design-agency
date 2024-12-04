@@ -1,6 +1,6 @@
 import { PageHeader } from '@/components/page-header';
-import { TeamMember } from '@/components/about/team-member';
-import { teamMembers } from './[slug]/page';
+import { TeamCard } from '@/components/team/team-card';
+import { teamMembers } from '@/config/team';
 
 export default function TeamPage() {
   return (
@@ -14,15 +14,8 @@ export default function TeamPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Object.entries(teamMembers).map(([slug, member]) => (
-              <TeamMember
-                key={slug}
-                name={member.name}
-                role={member.role}
-                image={member.image}
-                bio={member.bio.split('\n\n')[0]} // Just use the first paragraph for the card
-                slug={slug}
-              />
+            {teamMembers.map((member, index) => (
+              <TeamCard key={member.id} member={member} index={index} />
             ))}
           </div>
 

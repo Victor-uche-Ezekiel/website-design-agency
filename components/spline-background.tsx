@@ -13,8 +13,10 @@ export function SplineBackground() {
         }`}
       >
         <iframe
-          // src="https://my.spline.design/worldplanet-236d00b6438830c6ba0daa2542b24802/"
-          src="https://my.spline.design/cubic-384037281e3032cb00511704a5f9fc77/"
+          // src="https://my.spline.design/macbookprocopy-fa847e18f87c733c99a8c7d7e5b8935d/"
+          // src="https://my.spline.design/nexbotrobotcharacterconcept-9c3411babb1647fcb1d12fc2a1c61d61/"
+          src="https://my.spline.design/worldplanet-236d00b6438830c6ba0daa2542b24802/"
+          // src="https://my.spline.design/cubic-384037281e3032cb00511704a5f9fc77/"
           frameBorder="0"
           width="100%"
           height="100%"

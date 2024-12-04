@@ -75,21 +75,27 @@ export function ServicesSection({ services }: { services: Service[] }) {
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className="group relative"
+              className={`group relative ${index === 0 ? 'md:col-span-2' : ''}`}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-purple-500/5 rounded-xl -m-2 group-hover:from-primary/10 group-hover:to-purple-500/10 transition-colors duration-300" />
-              <div className="relative p-8 space-y-6 bg-background/50 backdrop-blur-sm rounded-lg shadow-lg border border-primary/10 h-full">
-                <div className="bg-gradient-to-r from-primary/10 to-purple-600/10 w-16 h-16 rounded-lg flex items-center justify-center group-hover:from-primary/20 group-hover:to-purple-600/20 transition-colors duration-300">
-                  <div className="text-primary group-hover:scale-110 transition-transform duration-300">
+              <div className={`relative p-8 space-y-6 bg-background/50 backdrop-blur-sm rounded-lg shadow-lg border border-primary/10 h-full ${
+                index === 0 ? 'md:flex md:gap-8 md:items-center' : ''
+              }`}>
+                <div className={`bg-gradient-to-r from-primary/10 to-purple-600/10 rounded-lg flex items-center justify-center group-hover:from-primary/20 group-hover:to-purple-600/20 transition-colors duration-300 ${
+                  index === 0 ? 'w-24 h-24 md:w-32 md:h-32 flex-shrink-0' : 'w-16 h-16'
+                }`}>
+                  <div className={`text-primary group-hover:scale-110 transition-transform duration-300 ${
+                    index === 0 ? 'scale-150' : ''
+                  }`}>
                     {getIcon(service.iconName)}
                   </div>
                 </div>
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold">{service.title}</h3>
+                <div className={`space-y-4 ${index === 0 ? 'md:flex-1' : ''}`}>
+                  <h3 className={`font-bold ${index === 0 ? 'text-3xl md:text-4xl' : 'text-2xl'}`}>{service.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     {service.description}
                   </p>
-                  <ul className="space-y-2">
+                  <ul className={`space-y-2 ${index === 0 ? 'md:grid md:grid-cols-2 md:gap-4 md:space-y-0' : ''}`}>
                     {service.features?.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center gap-2">
                         <Check className="w-5 h-5 text-primary" />
@@ -100,9 +106,9 @@ export function ServicesSection({ services }: { services: Service[] }) {
                   <Button
                     asChild
                     variant="outline"
-                    className="w-full mt-4 group-hover:bg-primary/5"
+                    className={`mt-4 group-hover:bg-primary/5 ${index === 0 ? 'w-auto' : 'w-full'}`}
                   >
-                    <Link href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <Link href={`/services/${service.slug}`}>
                       {service.buttonText}
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Link>

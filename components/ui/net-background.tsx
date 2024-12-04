@@ -1,169 +1,162 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { useEffect, useRef, memo } from "react";
 
 interface Point {
   x: number;
   y: number;
 }
 
-export function NetBackground() {
+const GRID_SPACING = 80;
+const POINT_RADIUS = 2;
+const CONNECTION_DISTANCE = 100;
+const MAX_CONNECTIONS = 3;
+
+// Convert HSL to RGBA for canvas
+const primaryColor = "rgba(157, 0, 255, 0.2)"; // Primary color with 0.2 opacity
+const primaryColorDot = "rgba(157, 0, 255, 0.5)"; // Primary color with 0.5 opacity
+
+function NetBackgroundComponent() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const mousePosition = useRef<Point>({ x: 0, y: 0 });
-  const time = useMotionValue(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const animationFrameId = useRef<number>();
+  const lastRenderTime = useRef<number>(0);
+  const isVisible = useRef(true);
+  const FPS_LIMIT = 30;
+  const FRAME_TIME = 1000 / FPS_LIMIT;
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      if (canvasRef.current) {
-        const rect = canvasRef.current.getBoundingClientRect();
-        mousePosition.current = {
-          x: event.clientX - rect.left,
-          y: event.clientY - rect.top,
+    const canvas = canvasRef.current;
+    const container = containerRef.current;
+    if (!canvas || !container) return;
+
+    const ctx = canvas.getContext("2d", { alpha: false });
+    if (!ctx) return;
+
+    const handleVisibilityChange = () => {
+      isVisible.current = document.visibilityState === "visible";
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    let isPowerSaveMode = false;
+    if ("getBattery" in navigator) {
+      (navigator as any).getBattery?.().then((battery: any) => {
+        const updateBatteryStatus = () => {
+          isPowerSaveMode = battery.level <= 0.2 && !battery.charging;
         };
+        battery.addEventListener("levelchange", updateBatteryStatus);
+        battery.addEventListener("chargingchange", updateBatteryStatus);
+        updateBatteryStatus();
+      });
+    }
+
+    const updateCanvasSize = () => {
+      const rect = container.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+
+      canvas.style.width = `${rect.width}px`;
+      canvas.style.height = `${rect.height}px`;
+    };
+
+    updateCanvasSize();
+
+    const resizeObserver = new ResizeObserver(() => {
+      if (isVisible.current) {
+        updateCanvasSize();
+        updatePoints();
+      }
+    });
+    resizeObserver.observe(container);
+
+    const points: Point[] = [];
+    const updatePoints = () => {
+      points.length = 0;
+      const rect = container.getBoundingClientRect();
+      const cols = Math.floor(rect.width / GRID_SPACING);
+      const rows = Math.floor(rect.height / GRID_SPACING);
+
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          points.push({
+            x: i * GRID_SPACING + GRID_SPACING / 2,
+            y: j * GRID_SPACING + GRID_SPACING / 2,
+          });
+        }
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    updatePoints();
+
+    const animate = (currentTime: number) => {
+      if (!isVisible.current) {
+        animationFrameId.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      if (
+        currentTime - lastRenderTime.current >=
+        (isPowerSaveMode ? FRAME_TIME * 2 : FRAME_TIME)
+      ) {
+        const rect = container.getBoundingClientRect();
+
+        // Fill with background color
+        ctx.fillStyle = "#000000";
+        ctx.fillRect(0, 0, rect.width, rect.height);
+
+        // Set theme colors
+        ctx.strokeStyle = primaryColor;
+        ctx.fillStyle = primaryColorDot;
+
+        points.forEach((point) => {
+          // Draw point
+          ctx.beginPath();
+          ctx.arc(point.x, point.y, POINT_RADIUS, 0, Math.PI * 2);
+          ctx.fill();
+
+          let connections = 0;
+          for (const otherPoint of points) {
+            if (connections >= MAX_CONNECTIONS) break;
+
+            const dx = otherPoint.x - point.x;
+            const dy = otherPoint.y - point.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance > 0 && distance < CONNECTION_DISTANCE) {
+              ctx.beginPath();
+              ctx.moveTo(point.x, point.y);
+              ctx.lineTo(otherPoint.x, otherPoint.y);
+              ctx.stroke();
+              connections++;
+            }
+          }
+        });
+
+        lastRenderTime.current = currentTime;
+      }
+
+      animationFrameId.current = requestAnimationFrame(animate);
+    };
+
+    animationFrameId.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrameId.current) {
+        cancelAnimationFrame(animationFrameId.current);
+      }
+      resizeObserver.disconnect();
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
-  useAnimationFrame((t) => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    // Set canvas size to match display size
-    const dpr = window.devicePixelRatio || 1;
-    const rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
-
-    // Clear canvas
-    ctx.clearRect(0, 0, rect.width, rect.height);
-
-    // Grid properties
-    const spacing = 60; // Increased spacing
-    const cols = Math.floor(rect.width / spacing) + 2;
-    const rows = Math.floor(rect.height / spacing) + 2;
-
-    // Animation time
-    time.set(t / 2000); // Slowed down animation
-
-    // Draw grid
-    ctx.strokeStyle = "rgba(147, 51, 234, 0.08)"; // Reduced opacity for lines
-    ctx.lineWidth = 1;
-
-    for (let i = 0; i < cols; i++) {
-      for (let j = 0; j < rows; j++) {
-        const x = i * spacing;
-        const y = j * spacing;
-
-        // Calculate distance from mouse
-        const dx = x - mousePosition.current.x;
-        const dy = y - mousePosition.current.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-        const maxDistance = 200; // Increased interaction distance
-
-        // Calculate displacement based on mouse position and time
-        const angle = Math.atan2(dy, dx);
-        const displacement = Math.max(0, 1 - distance / maxDistance) * 25; // Increased displacement
-        const offsetX = Math.cos(angle) * displacement;
-        const offsetY = Math.sin(angle) * displacement;
-
-        // Add wave effect
-        const wave =
-          Math.sin(i * 0.3 + time.get()) * 3 + // Adjusted wave parameters
-          Math.cos(j * 0.3 + time.get()) * 3;
-
-        // Draw point
-        const pointSize = Math.max(1.5, 4 * (1 - distance / maxDistance)); // Larger points
-        ctx.beginPath();
-        ctx.arc(
-          x + offsetX + wave,
-          y + offsetY,
-          pointSize,
-          0,
-          Math.PI * 2
-        );
-        ctx.fillStyle = "rgba(147, 51, 234, 0.2)"; // Adjusted point opacity
-        ctx.fill();
-
-        // Draw lines to neighbors with gradient
-        if (i < cols - 1) {
-          const gradient = ctx.createLinearGradient(
-            x + offsetX + wave,
-            y + offsetY,
-            x + spacing + Math.cos(Math.atan2(dy, dx + spacing)) * Math.max(0, 1 - distance / maxDistance) * 25 + Math.sin((i + 1) * 0.3 + time.get()) * 3 + Math.cos(j * 0.3 + time.get()) * 3,
-            y + Math.sin(Math.atan2(dy, dx + spacing)) * Math.max(0, 1 - distance / maxDistance) * 25
-          );
-          gradient.addColorStop(0, "rgba(147, 51, 234, 0.08)");
-          gradient.addColorStop(1, "rgba(168, 85, 247, 0.08)");
-          ctx.strokeStyle = gradient;
-          
-          ctx.beginPath();
-          ctx.moveTo(x + offsetX + wave, y + offsetY);
-          const nextOffsetX =
-            Math.cos(Math.atan2(dy, dx + spacing)) *
-            Math.max(0, 1 - distance / maxDistance) *
-            25;
-          const nextWave =
-            Math.sin((i + 1) * 0.3 + time.get()) * 3 +
-            Math.cos(j * 0.3 + time.get()) * 3;
-          ctx.lineTo(
-            x + spacing + nextOffsetX + nextWave,
-            y +
-              Math.sin(Math.atan2(dy, dx + spacing)) *
-                Math.max(0, 1 - distance / maxDistance) *
-                25
-          );
-          ctx.stroke();
-        }
-
-        if (j < rows - 1) {
-          const gradient = ctx.createLinearGradient(
-            x + offsetX + wave,
-            y + offsetY,
-            x + Math.cos(Math.atan2(dy + spacing, dx)) * Math.max(0, 1 - distance / maxDistance) * 25 + Math.sin(i * 0.3 + time.get()) * 3 + Math.cos((j + 1) * 0.3 + time.get()) * 3,
-            y + spacing + Math.sin(Math.atan2(dy + spacing, dx)) * Math.max(0, 1 - distance / maxDistance) * 25
-          );
-          gradient.addColorStop(0, "rgba(147, 51, 234, 0.08)");
-          gradient.addColorStop(1, "rgba(168, 85, 247, 0.08)");
-          ctx.strokeStyle = gradient;
-
-          ctx.beginPath();
-          ctx.moveTo(x + offsetX + wave, y + offsetY);
-          const nextOffsetY =
-            Math.sin(Math.atan2(dy + spacing, dx)) *
-            Math.max(0, 1 - distance / maxDistance) *
-            25;
-          const nextWave =
-            Math.sin(i * 0.3 + time.get()) * 3 +
-            Math.cos((j + 1) * 0.3 + time.get()) * 3;
-          ctx.lineTo(
-            x +
-              Math.cos(Math.atan2(dy + spacing, dx)) *
-                Math.max(0, 1 - distance / maxDistance) *
-                25 +
-              wave,
-            y + spacing + nextOffsetY
-          );
-          ctx.stroke();
-        }
-      }
-    }
-  });
-
   return (
-    <motion.canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-    />
+    <div ref={containerRef} className="w-full h-full relative">
+      <canvas ref={canvasRef} className="absolute inset-0" />
+    </div>
   );
 }
+
+export const NetBackground = memo(NetBackgroundComponent);
