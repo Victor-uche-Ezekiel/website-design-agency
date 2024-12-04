@@ -9,6 +9,47 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-inter)', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'display-2xl': ['4.5rem', { lineHeight: '1.15', letterSpacing: '-0.02em' }],
+        'display-xl': ['3.75rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'display-lg': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.02em' }],
+        'display-md': ['2.25rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'display-sm': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.01em' }],
+        'display-xs': ['1.5rem', { lineHeight: '1.4', letterSpacing: '0' }],
+        'body-2xl': ['1.5rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-xl': ['1.25rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-md': ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'body-sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0' }],
+        'body-xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0' }],
+      },
+      letterSpacing: {
+        'tighter': '-0.04em',
+        'tight': '-0.02em', 
+        'normal': '0',
+        'wide': '0.02em',
+        'wider': '0.04em',
+        'widest': '0.08em',
+      },
+      lineHeight: {
+        'tight': '1.15',
+        'snug': '1.3',
+        'normal': '1.5',
+        'relaxed': '1.6',
+        'loose': '1.8',
+      },
+      fontWeight: {
+        'light': '300',
+        'normal': '400',
+        'medium': '500',
+        'semibold': '600',
+        'bold': '700',
+        'extrabold': '800',
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,7 +94,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
 };
 
 export default config;

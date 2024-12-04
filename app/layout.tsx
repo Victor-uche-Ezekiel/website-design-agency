@@ -6,12 +6,16 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { BackButton } from "@/components/back-button";
 import { PageTransition } from "@/components/ui/page-transition";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
-  title: "Web Design Agency",
-  description: "Professional web design and development services",
+  title: "PixelPerfect - Web Design Agency",
+  description: "Professional web design and development services for modern businesses. Transform your digital presence with our expert team.",
 };
 
 export default function RootLayout({
@@ -21,7 +25,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={cn(
+        inter.variable,
+        "font-sans antialiased"
+      )}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

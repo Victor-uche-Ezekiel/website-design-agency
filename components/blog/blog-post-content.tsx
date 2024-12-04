@@ -1,10 +1,11 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { CalendarDays, Clock, Share2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { BlogPost } from '@/lib/blog-data';
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { CalendarDays, Clock, Share2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { BlogPost } from "@/lib/blog-data";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -53,23 +54,24 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
       {/* Author Section */}
       <div className="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex items-center gap-4 py-8 border-b"
         >
-          <Image
-            src={post.author.avatar}
-            alt={post.author.name}
-            width={56}
-            height={56}
-            className="rounded-full"
-          />
+          <Avatar className="h-14 w-14 border-2 border-background shadow-md">
+            <AvatarImage
+              src={post.author.avatar}
+              alt={post.author.name}
+              className="object-cover"
+            />
+            <AvatarFallback>{post.author.name.slice(0, 2)}</AvatarFallback>
+          </Avatar>
           <div>
             <div className="font-medium text-lg">{post.author.name}</div>
             <div className="text-sm text-muted-foreground">
-              {post.author.role || 'Author'}
+              {post.author.role || "Author"}
             </div>
           </div>
           <Button variant="outline" size="sm" className="ml-auto">
@@ -80,7 +82,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       </div>
 
       {/* Content Section */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
