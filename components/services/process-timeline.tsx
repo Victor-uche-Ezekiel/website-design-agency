@@ -21,8 +21,9 @@ export function ProcessTimeline() {
             Our Process
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We follow a proven methodology to deliver exceptional results for
-            every project. Each step is carefully designed to ensure success.
+            We follow an innovative methodology to deliver exceptional results
+            for every project. Each step is carefully designed to ensure
+            success.
           </p>
         </div>
 

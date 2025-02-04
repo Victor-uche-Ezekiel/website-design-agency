@@ -8,6 +8,7 @@ import { Moon, Sun, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Logo } from "@/components/logo";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -59,12 +60,10 @@ export function Navigation() {
         )}
       >
         <div className="flex justify-between items-center h-14 sm:h-16">
-          <Link
-            href="/"
-            className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent shrink-0"
-          >
-            PixelPerfect
-          </Link>
+          <div className="flex items-center gap-2">
+            <Logo />
+            <span className="font-bold text-xl">Vikiflow</span>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-1">

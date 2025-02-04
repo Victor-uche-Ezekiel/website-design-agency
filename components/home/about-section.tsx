@@ -79,21 +79,22 @@ export function AboutSection({ stats }: AboutSectionProps) {
           </motion.div>
 
           {/* Main Content Grid */}
-          <motion.div variants={itemVariants} className="grid lg:grid-cols-2 gap-12 mb-24">
+          <motion.div
+            variants={itemVariants}
+            className="grid lg:grid-cols-2 gap-12 mb-24"
+          >
             {/* Left Column - Text Content */}
             <div className="space-y-8">
               <div className="prose prose-lg dark:prose-invert">
-                {aboutContent.mainText.split('\n\n').map((paragraph, index) => (
-                  <p key={index} className="text-muted-foreground leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
+                <p className="text-muted-foreground leading-relaxed">
+                  {aboutContent.text}
+                </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 {aboutContent.highlights.map((highlight, index) => (
                   <div key={index} className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-primary mt-1 shrink-0" />
-                    <span className="text-sm">{highlight}</span>
+                    <span className="text-sm">{highlight.description}</span>
                   </div>
                 ))}
               </div>

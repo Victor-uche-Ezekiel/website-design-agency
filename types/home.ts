@@ -1,9 +1,12 @@
-import { LucideIcon } from 'lucide-react';
+import { LucideIcon } from "lucide-react";
 
 export interface Stat {
-  number: string;
+  number?: string;
   label: string;
   sublabel: string;
+  icon?: string;
+  value?: string;
+  description?: string;
 }
 
 // Using string type for icon name instead of the actual component
@@ -14,12 +17,12 @@ export interface Challenge {
 }
 
 export interface Service {
-  iconName: string;
   title: string;
   description: string;
+  iconName: string;
+  features: string[];
   buttonText: string;
-  gradient: string;
-  features: string[];  // Adding features array
+  slug: string;
 }
 
 export interface Testimonial {

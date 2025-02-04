@@ -11,65 +11,77 @@ export interface AboutStat {
 }
 
 export const aboutContent = {
-  heading: "Crafting Digital Excellence Since 2015",
-  subheading: "Where Innovation Meets Design",
-  mainText: `At PixelPerfect, we're more than just a web design agency – we're your digital transformation partner. With over 8 years of experience in crafting exceptional digital experiences, we combine cutting-edge technology with creative artistry to bring your vision to life.
-
-Our team of passionate designers, developers, and digital strategists works collaboratively to create solutions that not only look stunning but drive real business results. We believe in the power of thoughtful design and innovative technology to transform businesses and engage audiences.
-
-From startups to enterprise organizations, we've helped hundreds of clients across various industries establish their digital presence, streamline their operations, and achieve their business goals through custom-tailored digital solutions.`,
+  heading: "Pioneering Digital Innovation",
+  subheading: "Creating Exceptional Digital Experiences",
+  text: "At Vikiflow, we're more than just a web design agency - we're your partner in digital transformation. Our innovative team combines creativity with technical expertise to create stunning digital experiences that drive real business results.",
   highlights: [
-    "Award-winning design team with industry recognition",
-    "Full-spectrum digital services under one roof",
-    "Agile development methodology for faster delivery",
-    "Focus on ROI and measurable business outcomes",
-    "Continuous support and performance optimization",
-    "Industry-leading security and best practices"
-  ]
+    {
+      title: "Innovation First",
+      description:
+        "We stay ahead of the curve with cutting-edge technologies and design trends.",
+    },
+    {
+      title: "Client Success",
+      description:
+        "Your success is our priority. We work closely with you to achieve your business goals.",
+    },
+    {
+      title: "Quality Driven",
+      description:
+        "We maintain high standards in every aspect of our work, from design to development.",
+    },
+  ],
 };
 
 export const stats: Stat[] = [
   {
-    number: "8989",
-    label: "Hyper Qualified Opportunities",
-    sublabel: "by AI-based Engine",
+    number: "100%",
+    label: "Client Satisfaction",
+    sublabel: "on completed projects",
   },
   {
-    number: "3x",
-    label: "Increase in conversion rates",
-    sublabel: "when using AI software Hub",
+    number: "2x",
+    label: "Faster delivery",
+    sublabel: "with our agile approach",
   },
   {
-    number: "21%",
-    label: "Increase in deal size",
-    sublabel: "from focused matchmaking",
+    number: "24/7",
+    label: "Support available",
+    sublabel: "for all our clients",
+  },
+  {
+    icon: "CheckCircle",
+    label: "Project Success Rate",
+    value: "100%",
+    description: "Quality solutions delivered",
+    sublabel: "for all our clients",
   },
 ];
 
 export const aboutStats: AboutStat[] = [
   {
     iconName: "Users2",
-    value: 200,
+    value: 25,
     prefix: "",
     suffix: "+",
-    label: "Projects Completed",
-    description: "Successfully delivered digital solutions",
+    label: "Projects Launched",
+    description: "Successfully delivered solutions",
   },
   {
     iconName: "Heart",
-    value: 98,
+    value: 100,
     prefix: "",
     suffix: "%",
     label: "Client Satisfaction",
-    description: "Consistently exceeding expectations",
+    description: "Exceeding expectations",
   },
   {
     iconName: "Trophy",
-    value: 15,
+    value: 5,
     prefix: "",
     suffix: "+",
-    label: "Industry Awards",
-    description: "Recognition for excellence",
+    label: "Industry Recognition",
+    description: "Rising star in digital design",
   },
   {
     iconName: "Clock",
@@ -356,30 +368,30 @@ export const featuredProjects = [
 export const testimonials = [
   {
     id: "1",
-    title: "Amazing Web Design Service",
+    title: "Innovative Web Design Approach",
     description:
-      "They transformed our online presence completely. The team was professional and delivered beyond our expectations.",
-    slug: "amazing-web-design",
+      "Their fresh perspective and innovative approach helped us create a modern, engaging website that perfectly represents our brand.",
+    slug: "innovative-web-design",
     image: "/testimonials/client1.jpg",
     technologies: ["React", "Tailwind CSS", "Next.js"],
     projectSlug: "ecommerce-platform-redesign",
   },
   {
     id: "2",
-    title: "Outstanding E-commerce Solution",
+    title: "Modern E-commerce Solution",
     description:
-      "The e-commerce platform they built for us has significantly improved our online sales and customer experience.",
-    slug: "ecommerce-solution",
+      "Vikiflow delivered a cutting-edge e-commerce platform that has revolutionized our online presence and boosted our sales.",
+    slug: "modern-ecommerce",
     image: "/testimonials/client2.jpg",
     technologies: ["Shopify", "Custom CSS", "JavaScript"],
     projectSlug: "healthcare-management-system",
   },
   {
     id: "3",
-    title: "Excellent UI/UX Design",
+    title: "Creative UI/UX Design",
     description:
-      "Their attention to detail in UI/UX design has helped us achieve a much better user engagement rate.",
-    slug: "ui-ux-design",
+      "Their innovative UI/UX design approach has created an engaging user experience that our customers love.",
+    slug: "creative-ui-ux",
     image: "/testimonials/client3.jpg",
     technologies: ["Figma", "Adobe XD", "Prototyping"],
     projectSlug: "financial-analytics-dashboard",

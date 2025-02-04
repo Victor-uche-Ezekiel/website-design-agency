@@ -27,8 +27,8 @@ export const teamMembers: TeamMember[] = [
     role: "Full Stack Developer & Team Leader",
     image:
       "https://techsolutions-iota.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ffile.f204eaf7.png&w=750&q=75",
-    bio: `Victor Ezekiel is our accomplished Full Stack Developer and Team Leader, bringing extensive expertise 
-    in both front-end and back-end development. His technical leadership drives our team's success in 
+    bio: `Victor Ezekiel is our innovative Full Stack Developer and Team Leader, bringing fresh perspectives 
+    to both front-end and back-end development. His technical leadership drives our team's success in 
     delivering exceptional web solutions.
 
     With a strong foundation in modern web technologies and a passion for clean, efficient code, Victor 
@@ -43,7 +43,7 @@ export const teamMembers: TeamMember[] = [
       "Cloud Solutions",
     ],
     education: "Bachelor's in Computer Science",
-    contact: "victor.ezekiel@webdesignagency.com",
+    contact: "victor.ezekiel@vikiflow.com",
     social: {
       linkedin: "https://linkedin.com/in/victor-ezekiel",
       github: "https://github.com/victor-ezekiel",
@@ -55,12 +55,12 @@ export const teamMembers: TeamMember[] = [
     name: "Joseph Maze",
     role: "Front End Development Lead",
     image: josephMazeImage,
-    bio: `Joseph Maze leads our front-end development initiatives with a keen eye for detail and a passion 
-    for creating exceptional user experiences. His expertise in modern front-end technologies and UI/UX 
-    best practices ensures our clients receive cutting-edge web solutions.
+    bio: `Joseph Maze drives our front-end development initiatives with innovative approaches and a passion 
+    for creating exceptional user experiences. His expertise in cutting-edge front-end technologies and UI/UX 
+    best practices ensures our clients receive modern web solutions.
 
     As our Front End Lead, Joseph specializes in building responsive, accessible, and performant web 
-    applications. His leadership in implementing front-end best practices and maintaining coding standards 
+    applications. His forward-thinking approach to implementing front-end best practices and maintaining coding standards 
     has been crucial to our team's success.`,
     expertise: [
       "Front End Development",
@@ -71,7 +71,7 @@ export const teamMembers: TeamMember[] = [
       "Performance Optimization",
     ],
     education: "Bachelor's in Web Development",
-    contact: "joseph.maze@webdesignagency.com",
+    contact: "joseph.maze@vikiflow.com",
     social: {
       linkedin: "https://linkedin.com/in/joseph-maze",
       github: "https://github.com/joseph-maze",
@@ -84,11 +84,11 @@ export const teamMembers: TeamMember[] = [
     role: "Analytics & SEO Lead",
     image:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=800&fit=crop",
-    bio: `Seph Creative heads our Analytics and SEO department, bringing data-driven insights and 
-    strategic thinking to our digital solutions. Their expertise in search engine optimization and 
+    bio: `Seph Creative leads our Analytics and SEO department with innovative strategies and 
+    data-driven insights for our digital solutions. Their expertise in search engine optimization and 
     web analytics helps our clients achieve maximum visibility and performance in the digital space.
 
-    With a deep understanding of SEO best practices and analytics tools, Seph ensures our web solutions 
+    With a deep understanding of modern SEO practices and analytics tools, Seph ensures our web solutions 
     are not just beautifully designed but also optimized for search engines and user engagement. Their 
     approach combines technical SEO knowledge with content strategy to drive organic growth.`,
     expertise: [
@@ -100,7 +100,7 @@ export const teamMembers: TeamMember[] = [
       "Digital Marketing",
     ],
     education: "Master's in Digital Marketing",
-    contact: "seph.creative@webdesignagency.com",
+    contact: "seph.creative@vikiflow.com",
     social: {
       linkedin: "https://linkedin.com/in/seph-creative",
       twitter: "https://twitter.com/seph_creative",

@@ -7,27 +7,27 @@ const faqs = [
   {
     question: "How long does a typical web project take?",
     answer:
-      "Project timelines vary based on complexity and scope. A basic website typically takes 4-6 weeks, while more complex projects may take 8-12 weeks. We'll provide a detailed timeline during our consultation.",
+      "Project timelines are optimized for efficiency. A standard website typically takes 3-4 weeks, while more complex projects may take 6-8 weeks. We'll provide a detailed timeline during our consultation.",
   },
   {
     question: "What technologies do you use for development?",
     answer:
-      "We use modern, industry-leading technologies including React, Next.js, TypeScript, and Tailwind CSS. Our tech stack is chosen to ensure optimal performance, scalability, and maintainability.",
+      "We use cutting-edge technologies including React, Next.js, TypeScript, and Tailwind CSS. Our modern tech stack is chosen to ensure optimal performance, scalability, and maintainability.",
   },
   {
     question: "Do you provide website maintenance?",
     answer:
-      "Yes, we offer comprehensive maintenance packages that include regular updates, security monitoring, performance optimization, and technical support to keep your website running smoothly.",
+      "Yes, we offer comprehensive maintenance packages that include regular updates, security monitoring, performance optimization, and dedicated technical support to keep your website running smoothly.",
   },
   {
     question: "Can you help with branding and design?",
     answer:
-      "Absolutely! Our team includes experienced designers who can help develop your brand identity, including logos, color schemes, typography, and overall visual strategy.",
+      "Absolutely! Our creative team can help develop your brand identity, including logos, color schemes, typography, and overall visual strategy.",
   },
   {
     question: "Do you offer e-commerce solutions?",
     answer:
-      "Yes, we build custom e-commerce solutions using platforms like Shopify and WooCommerce. We can handle everything from product catalogs to payment processing and inventory management.",
+      "Yes, we build modern e-commerce solutions using cutting-edge platforms like Shopify and WooCommerce. We handle everything from product catalogs to payment processing and inventory management with a focus on innovation and user experience.",
   },
 ];
 

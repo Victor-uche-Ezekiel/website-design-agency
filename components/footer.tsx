@@ -41,7 +41,7 @@ export function Footer() {
           {/* Brand Column */}
           <div className="space-y-4">
             <h3 className="text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
-              PixelPerfect
+              Vikiflow
             </h3>
             <p className="text-muted-foreground">
               Transforming ideas into stunning digital experiences that
@@ -222,12 +222,12 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group">
                 <Mail className="h-4 w-4 shrink-0" />
-                <a
-                  href="mailto:hello@pixelperfect.com"
+                <Link
+                  href="mailto:hello@vikiflow.com"
                   className="hover:underline"
                 >
-                  hello@pixelperfect.com
-                </a>
+                  hello@vikiflow.com
+                </Link>
               </li>
               <li className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors group">
                 <Phone className="h-4 w-4 shrink-0" />
@@ -250,9 +250,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="py-6 border-t">
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <p className="text-muted-foreground text-sm">
-              &copy; {new Date().getFullYear()} PixelPerfect. All rights
-              reserved.
+            <p className="text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} Vikiflow. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link

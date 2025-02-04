@@ -1,36 +1,35 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Card } from '@/components/ui/card';
-import { 
-  Lightbulb, 
-  Users, 
-  Trophy,
-  Clock
-} from 'lucide-react';
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { Card } from "@/components/ui/card";
+import { Lightbulb, Users, Trophy, Clock } from "lucide-react";
 
 const reasons = [
   {
     icon: <Lightbulb className="h-6 w-6" />,
     title: "Innovative Solutions",
-    description: "We leverage the latest technologies and design trends to create cutting-edge solutions."
+    description:
+      "We leverage the latest technologies and design trends to create cutting-edge solutions.",
   },
   {
     icon: <Users className="h-6 w-6" />,
     title: "Expert Team",
-    description: "Our team of specialists brings years of industry experience to every project."
+    description:
+      "Our team of specialists brings innovative solutions and fresh perspectives to every project.",
   },
   {
     icon: <Trophy className="h-6 w-6" />,
-    title: "Proven Track Record",
-    description: "We've successfully delivered hundreds of projects for clients worldwide."
+    title: "Quality Focus",
+    description:
+      "We maintain the highest standards of quality in every project we deliver.",
   },
   {
     icon: <Clock className="h-6 w-6" />,
     title: "Timely Delivery",
-    description: "We pride ourselves on delivering projects on time and within budget."
-  }
+    description:
+      "We pride ourselves on delivering projects on time and within budget.",
+  },
 ];
 
 export function WhyChooseUs() {
@@ -42,7 +41,8 @@ export function WhyChooseUs() {
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">Why Choose Us</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            We combine creativity, technical expertise, and strategic thinking to deliver exceptional results.
+            We combine creativity, technical expertise, and strategic thinking
+            to deliver exceptional results.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -20,7 +20,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 
@@ -113,8 +119,8 @@ export default function ContactPage() {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email",
-      content: "hello@pixelperfect.com",
-      link: "mailto:hello@pixelperfect.com",
+      content: "hello@vikiflow.com",
+      link: "mailto:hello@vikiflow.com",
     },
     {
       icon: <Phone className="h-6 w-6" />,
@@ -230,7 +236,9 @@ export default function ContactPage() {
                     name="company"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base">Your company/organisation</FormLabel>
+                        <FormLabel className="text-base">
+                          Your company/organisation
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder=""
@@ -268,7 +276,9 @@ export default function ContactPage() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-base">Phone number</FormLabel>
+                        <FormLabel className="text-base">
+                          Phone number
+                        </FormLabel>
                         <FormControl>
                           <Input
                             placeholder=""
@@ -289,7 +299,9 @@ export default function ContactPage() {
                   name="budget"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">Please select a rough budget range</FormLabel>
+                      <FormLabel className="text-base">
+                        Please select a rough budget range
+                      </FormLabel>
                       <div className="flex gap-2 w-full">
                         <Select
                           onValueChange={(value) => {
@@ -308,13 +320,26 @@ export default function ContactPage() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="reset" className="text-muted-foreground italic">Reset selection</SelectItem>
+                            <SelectItem
+                              value="reset"
+                              className="text-muted-foreground italic"
+                            >
+                              Reset selection
+                            </SelectItem>
                             <Separator className="my-2" />
                             <SelectItem value="<2k">Below $2,000</SelectItem>
-                            <SelectItem value="2k-5k">$2,000 - $5,000</SelectItem>
-                            <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                            <SelectItem value="10k-15k">$10,000 - $15,000</SelectItem>
-                            <SelectItem value="15k-20k">$15,000 - $20,000</SelectItem>
+                            <SelectItem value="2k-5k">
+                              $2,000 - $5,000
+                            </SelectItem>
+                            <SelectItem value="5k-10k">
+                              $5,000 - $10,000
+                            </SelectItem>
+                            <SelectItem value="10k-15k">
+                              $10,000 - $15,000
+                            </SelectItem>
+                            <SelectItem value="15k-20k">
+                              $15,000 - $20,000
+                            </SelectItem>
                             <SelectItem value="20k+">$20,000+</SelectItem>
                           </SelectContent>
                         </Select>
@@ -329,7 +354,9 @@ export default function ContactPage() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-base">How can we help?</FormLabel>
+                      <FormLabel className="text-base">
+                        How can we help?
+                      </FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Type your message..."
@@ -351,7 +378,10 @@ export default function ContactPage() {
                       className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
                       You agree to our friendly{" "}
-                      <Link href="/privacy" className="text-primary hover:underline">
+                      <Link
+                        href="/privacy"
+                        className="text-primary hover:underline"
+                      >
                         privacy policy
                       </Link>
                       .
@@ -367,7 +397,11 @@ export default function ContactPage() {
                       <>
                         <motion.div
                           animate={{ rotate: 360 }}
-                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
                           className="mr-2"
                         >
                           <Loader2 className="h-4 w-4" />
@@ -395,7 +429,7 @@ export default function ContactPage() {
             </h2>
             <p className="text-muted-foreground mb-12 max-w-2xl mx-auto">
               Join our growing list of satisfied clients who have transformed
-              their digital presence with our expertise.
+              their digital presence with our innovative solutions.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-12 items-center justify-items-center">
               {[1, 2, 3, 4, 5, 6].map((index) => (

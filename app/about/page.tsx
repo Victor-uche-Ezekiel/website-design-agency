@@ -30,16 +30,16 @@ export default function AboutPage() {
           >
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
-              <p className="text-muted-foreground mb-4">
-                At PixelPerfect, we believe in transforming ideas into
-                exceptional digital experiences. Our mission is to help
-                businesses thrive in the digital age through innovative design
-                and cutting-edge technology.
+              <p className="text-muted-foreground text-lg mb-8">
+                At Vikiflow, we believe in transforming ideas into exceptional
+                digital experiences. Our mission is to help businesses thrive in
+                the digital age through innovative design and cutting-edge
+                technology.
               </p>
               <p className="text-muted-foreground">
-                Founded in 2020, we've grown from a small design studio to a
-                full-service digital agency, serving clients worldwide with a
-                focus on quality, creativity, and results.
+                Our innovative team brings fresh perspectives and cutting-edge
+                expertise in digital experiences. Our commitment to innovation
+                and client success drives everything we do.
               </p>
             </div>
             <div className="relative">
@@ -59,8 +59,8 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Meet Our Team</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
-              Our diverse team of experts brings together years of experience in
-              design, development, and digital strategy.
+              Our dynamic team combines innovative thinking with technical
+              expertise to deliver cutting-edge digital solutions.
             </p>
             <a
               href="/team"

@@ -37,7 +37,7 @@ const comparisonData = {
       icon: Search,
       title: "Search Visibility",
       description:
-        "Dominate search results with our proven optimization techniques that drive organic traffic and increase your digital footprint.",
+        "Enhance search visibility with our innovative optimization techniques that drive organic traffic and increase your digital footprint.",
     },
     {
       icon: Code2,

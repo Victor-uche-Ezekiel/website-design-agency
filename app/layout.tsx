@@ -14,8 +14,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PixelPerfect - Web Design Agency",
-  description: "Professional web design and development services for modern businesses. Transform your digital presence with our expert team.",
+  title: "Vikiflow - Web Design Agency",
+  description:
+    "Professional web design and development services for modern businesses. Transform your digital presence with our expert team.",
 };
 
 export default function RootLayout({
@@ -25,10 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(
-        inter.variable,
-        "font-sans antialiased"
-      )}>
+      <body className={cn(inter.variable, "font-sans antialiased")}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

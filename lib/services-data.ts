@@ -5,7 +5,7 @@ export const services = [
     icon: "Code",
     slug: "web-development",
     description:
-      "Build powerful, scalable web applications with cutting-edge technologies and best practices.",
+      "Create powerful, innovative web applications using cutting-edge technologies and modern development practices.",
     features: [
       "Full-Stack Development",
       "Custom Web Applications",
@@ -16,7 +16,7 @@ export const services = [
     ],
     content: {
       overview:
-        "Our web development services combine technical expertise with modern development practices to create robust, scalable, and high-performance web applications. We leverage the latest technologies and frameworks to deliver solutions that drive business growth and user engagement.",
+        "Our web development approach combines innovative technologies with modern development practices to create robust, scalable, and high-performance web applications. We leverage the latest frameworks and tools to deliver solutions that drive digital transformation and user engagement.",
       sections: [
         {
           title: "Full-Stack Development",
@@ -117,18 +117,18 @@ export const services = [
     icon: "Palette",
     slug: "ui-ux-design",
     description:
-      "Create intuitive, engaging user experiences with data-driven design solutions that convert visitors into customers.",
+      "Design intuitive, forward-thinking user experiences with data-driven solutions that transform visitors into loyal customers.",
     features: [
       "User Research & Analysis",
-      "Interface Design",
-      "User Experience Design",
+      "Modern Interface Design",
+      "User Experience Innovation",
       "Interaction Design",
       "Usability Testing",
       "Design Systems",
     ],
     content: {
       overview:
-        "Our UI/UX design services blend creativity with strategic thinking to create digital experiences that delight users and drive business results. We follow a user-centered design approach, ensuring every interface is not just beautiful, but also functional and intuitive.",
+        "Our UI/UX design approach combines creative innovation with strategic thinking to create digital experiences that captivate users and drive business growth. We embrace modern design principles and emerging trends to ensure every interface is both beautiful and functional.",
       sections: [
         {
           title: "User Research & Strategy",
@@ -230,18 +230,18 @@ export const services = [
     icon: "PenTool",
     slug: "graphic-design",
     description:
-      "Transform your brand with stunning visual designs that communicate your message effectively and leave a lasting impression.",
+      "Create impactful visual designs using modern trends and innovative approaches that make your brand stand out in the digital landscape.",
     features: [
-      "Brand Identity Design",
-      "Print & Digital Design",
+      "Contemporary Brand Identity",
+      "Digital-First Design",
       "Marketing Materials",
       "Social Media Graphics",
-      "Illustration",
+      "Modern Illustration",
       "Motion Graphics",
     ],
     content: {
       overview:
-        "Our graphic design services combine artistic creativity with strategic thinking to create visually compelling designs that elevate your brand. We craft unique visual solutions that resonate with your target audience and help achieve your business objectives.",
+        "Our graphic design approach combines fresh creativity with strategic thinking to create visually compelling designs that elevate your brand. We craft modern visual solutions that connect with your target audience and drive engagement in today's digital world.",
       sections: [
         {
           title: "Brand Identity Design",
@@ -783,6 +783,179 @@ export const services = [
           "Let us handle the technical details while you focus on your business.",
         buttonText: "Start Maintenance Plan",
       },
+    },
+  },
+  {
+    id: 9,
+    title: "Competitors Analysis",
+    icon: "Target",
+    slug: "competitors-analysis",
+    description:
+      "Gain strategic insights into your market position with comprehensive competitor analysis and benchmarking.",
+    features: [
+      "Market Position Analysis",
+      "Competitive Benchmarking",
+      "SWOT Analysis",
+      "Market Gap Identification",
+      "Strategy Recommendations",
+      "Performance Tracking",
+    ],
+    content: {
+      overview:
+        "Our Competitors Analysis service provides deep insights into your market landscape, helping you understand your competition and identify opportunities for growth. We use advanced analytics and research methodologies to give you a competitive edge.",
+      sections: [
+        {
+          title: "Market Research",
+          content:
+            "Comprehensive analysis of your market position and competition:",
+          bulletPoints: [
+            "Industry trend analysis",
+            "Market share assessment",
+            "Competitor profiling",
+            "Pricing strategy analysis",
+            "Feature comparison",
+            "Marketing strategy evaluation",
+          ],
+        },
+        {
+          title: "Strategic Analysis",
+          content:
+            "In-depth evaluation of competitive advantages and opportunities:",
+          bulletPoints: [
+            "SWOT analysis",
+            "Gap analysis",
+            "Unique selling proposition identification",
+            "Growth opportunity assessment",
+            "Risk analysis",
+            "Market positioning strategy",
+          ],
+        },
+        {
+          title: "Performance Metrics",
+          content: "Tracking and analyzing key performance indicators:",
+          bulletPoints: [
+            "Market share metrics",
+            "Customer satisfaction benchmarks",
+            "Digital presence comparison",
+            "Brand sentiment analysis",
+            "Performance trending",
+            "ROI analysis",
+          ],
+        },
+      ],
+      benefits: [
+        "Data-driven decision making",
+        "Strategic market positioning",
+        "Competitive advantage identification",
+        "Risk mitigation strategies",
+        "Growth opportunity discovery",
+        "Enhanced market understanding",
+      ],
+      process: [
+        {
+          title: "Initial Assessment",
+          description:
+            "Evaluating your current market position and identifying key competitors",
+        },
+        {
+          title: "Data Collection",
+          description: "Gathering comprehensive market and competitor data",
+        },
+        {
+          title: "Analysis",
+          description: "In-depth analysis of collected data and market trends",
+        },
+        {
+          title: "Strategy Development",
+          description: "Creating actionable recommendations based on findings",
+        },
+      ],
+    },
+  },
+  {
+    id: 10,
+    title: "Social Media Management",
+    icon: "Share2",
+    slug: "social-media-management",
+    description:
+      "Elevate your brand's social media presence with strategic content creation, community engagement, and performance analytics.",
+    features: [
+      "Content Strategy & Creation",
+      "Community Management",
+      "Social Media Analytics",
+      "Campaign Management",
+      "Brand Voice Development",
+      "Engagement Optimization",
+    ],
+    content: {
+      overview:
+        "Our Social Media Management service helps businesses build and maintain a strong social media presence across all major platforms. We combine creative content strategy with data-driven insights to maximize engagement and achieve your social media goals.",
+      sections: [
+        {
+          title: "Content Strategy",
+          content: "Comprehensive social media content planning and creation:",
+          bulletPoints: [
+            "Platform-specific content strategy",
+            "Content calendar development",
+            "Visual content creation",
+            "Copywriting and messaging",
+            "Brand voice consistency",
+            "Trending topic integration",
+          ],
+        },
+        {
+          title: "Community Management",
+          content: "Active engagement and community building across platforms:",
+          bulletPoints: [
+            "Real-time engagement monitoring",
+            "Comment and message management",
+            "Community guidelines enforcement",
+            "Crisis management",
+            "Influencer relationship building",
+            "User-generated content curation",
+          ],
+        },
+        {
+          title: "Analytics & Reporting",
+          content:
+            "Comprehensive tracking and analysis of social media performance:",
+          bulletPoints: [
+            "Performance metrics tracking",
+            "Engagement rate analysis",
+            "Audience growth monitoring",
+            "ROI measurement",
+            "Competitor benchmarking",
+            "Regular performance reports",
+          ],
+        },
+      ],
+      benefits: [
+        "Increased brand awareness",
+        "Higher engagement rates",
+        "Stronger community relationships",
+        "Improved customer service",
+        "Data-driven strategy optimization",
+        "Consistent brand messaging",
+      ],
+      process: [
+        {
+          title: "Strategy Development",
+          description:
+            "Creating a tailored social media strategy aligned with your goals",
+        },
+        {
+          title: "Content Creation",
+          description: "Developing engaging content for each platform",
+        },
+        {
+          title: "Active Management",
+          description: "Daily monitoring and engagement with your audience",
+        },
+        {
+          title: "Analysis & Optimization",
+          description: "Regular performance review and strategy refinement",
+        },
+      ],
     },
   },
 ];
