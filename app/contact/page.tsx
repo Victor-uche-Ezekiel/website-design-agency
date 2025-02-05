@@ -6,7 +6,6 @@ import { Send, Loader2 } from "lucide-react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -100,21 +99,19 @@ export default function ContactPage() {
   async function onSubmit(values: FormValues) {
     setIsSubmitting(true);
     try {
-      const templateParams = {
-        from_name: values.name,
-        from_email: values.email,
-        company: values.company,
-        phone: values.phone,
-        budget: values.budget,
-        message: values.message,
-      };
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
-      );
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error);
+      }
 
       toast({
         title: "Message sent!",
