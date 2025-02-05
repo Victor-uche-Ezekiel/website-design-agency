@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/nodejs";
 
 export async function POST(request: Request) {
   try {
@@ -18,8 +18,15 @@ export async function POST(request: Request) {
       process.env.EMAILJS_SERVICE_ID!,
       process.env.EMAILJS_TEMPLATE_ID!,
       templateParams,
-      process.env.EMAILJS_PUBLIC_KEY
+      {
+        publicKey: process.env.EMAILJS_PUBLIC_KEY!,
+        privateKey: process.env.EMAILJS_PRIVATE_KEY!,
+      }
     );
+
+    console.log(process.env.EMAILJS_SERVICE_ID);
+    console.log(process.env.EMAILJS_TEMPLATE_ID);
+    console.log(process.env.EMAILJS_PUBLIC_KEY);
 
     return NextResponse.json({ success: true });
   } catch (error) {
